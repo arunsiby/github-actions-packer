@@ -14,7 +14,7 @@ jobs:
       AWS_ACCESS_KEY_ID: ${{ secrets.ACCESS_KEY }}
       AWS_SECRET_ACCESS_KEY: ${{ secrets.SECRET_KEY }}
       AWS_DEFAULT_REGION: ${{ secrets.REGION }}
-      PRODUCT_VERSION: "1.9.4"
+      packer_version: "1.9.4"
 
     steps:
 
@@ -25,7 +25,7 @@ jobs:
       - name: "Packet Installation"
         uses: hashicorp/setup-packer@main
         with:
-          version: ${{ env.PRODUCT_VERSION }}
+          version: ${{ env.packer_version }}
 	       
       - name: "Packer init"
         run: packer init .
