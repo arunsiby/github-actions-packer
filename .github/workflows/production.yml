@@ -25,7 +25,7 @@ jobs:
       - name: "Packet Installation"
         uses: hashicorp/setup-packer@main
         with:
-        version: ${{ env.PRODUCT_VERSION }}
+          version: ${{ env.PRODUCT_VERSION }}
 	       
       - name: "Packer init"
         run: packer init .
