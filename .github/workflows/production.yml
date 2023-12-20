@@ -1,0 +1,41 @@
+---
+name: "Testing Github Actions Workflow"
+
+on:
+  push:
+    branches:
+      - production
+
+jobs:
+
+  build:
+    runs-on: ubuntu-latest
+	env:
+	  AWS_ACCESS_KEY_ID: ${{ secrets.ACCESS_KEY }}
+	  AWS_SECRET_ACCESS_KEY: ${{ secrets.SECRET_KEY }}
+	  AWS_DEFAULT_REGION: ${{ secrets.REGION }}
+	  PRODUCT_VERSION: "1.9.4"
+
+    steps:
+	
+      - name: "Checkout Repository"
+        uses: actions/checkout@v3
+
+      - name: "Packet Installation"
+        uses: hashicorp/setup-packer@main
+        with:
+          version: ${{ env.PRODUCT_VERSION }}
+	       
+	  - name: "Packer init"
+        run: packer init .
+		working-directory: ./packer/
+		
+	  - name: "Packer validate"
+        run: packer validate .
+		working-directory: ./packer/
+	  
+	  - name: "Packer Image build"
+        run: packer build .
+		working-directory: ./packer/
+
+
