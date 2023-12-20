@@ -10,11 +10,11 @@ jobs:
 
   build:
     runs-on: ubuntu-latest
-	env:
-	  AWS_ACCESS_KEY_ID: ${{ secrets.ACCESS_KEY }}
-	  AWS_SECRET_ACCESS_KEY: ${{ secrets.SECRET_KEY }}
-	  AWS_DEFAULT_REGION: ${{ secrets.REGION }}
-	  PRODUCT_VERSION: "1.9.4"
+    env:
+      AWS_ACCESS_KEY_ID: ${{ secrets.ACCESS_KEY }}
+      AWS_SECRET_ACCESS_KEY: ${{ secrets.SECRET_KEY }}
+      AWS_DEFAULT_REGION: ${{ secrets.REGION }}
+      PRODUCT_VERSION: "1.9.4"
 
     steps:
 	
