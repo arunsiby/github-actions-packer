@@ -1,5 +1,5 @@
 ---
-name: "Testing Github Actions Workflow"
+name: "Packer"
 
 on:
   push:
@@ -22,15 +22,15 @@ jobs:
       - name: "Checkout Repository"
         uses: actions/checkout@v3
 
-      - name: "Packet Installation"
+      - name: "Packer Installation"
         uses: hashicorp/setup-packer@main
         with:
           version: ${{ env.packer_version }}
-	       
+
       - name: "Packer init"
         run: packer init .
 	working-directory: ./packer/
-		
+
       - name: "Packer validate"
         run: packer validate .
 	working-directory: ./packer/
